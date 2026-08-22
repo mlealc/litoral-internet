@@ -189,22 +189,6 @@
   font-size: 1.2rem;
 }
 
-.number {
-  position: absolute;
-
-  right: 22px;
-  top: 10px;
-
-  color: rgba(255, 255, 255, 0.045);
-
-  font-size: 6rem;
-  font-weight: 800;
-
-  letter-spacing: -0.08em;
-
-  pointer-events: none;
-}
-
 /* CARDS SECUNDÁRIOS */
 
 .card {

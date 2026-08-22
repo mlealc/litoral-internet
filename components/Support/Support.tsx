@@ -46,7 +46,6 @@ export default function Support() {
               <strong>→</strong>
             </div>
 
-            <span className={styles.number}>01</span>
           </a>
 
           <a href="#" className={styles.card}>
