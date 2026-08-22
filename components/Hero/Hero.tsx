@@ -77,7 +77,7 @@ export default function Hero() {
             <div className={styles.cardIcon}>⌁</div>
 
             <div>
-              <small>roteador em</small>
+              <small>ROTEADOR EM</small>
               <strong>COMODATO</strong>
             </div>
           </div>
