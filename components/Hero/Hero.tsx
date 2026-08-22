@@ -49,8 +49,8 @@ export default function Hero() {
             </div>
 
             <div className={styles.proofText}>
-              <strong>+10.000 clientes conectados</strong>
-              <small>em Imbituba e região</small>
+              <strong>+5.000 clientes conectados</strong>
+              <small>em Imbituba</small>
             </div>
           </div>
         </div>
@@ -77,8 +77,8 @@ export default function Hero() {
             <div className={styles.cardIcon}>⌁</div>
 
             <div>
-              <small>WI-FI</small>
-              <strong>INCLUSO</strong>
+              <small>roteador em</small>
+              <strong>COMODATO</strong>
             </div>
           </div>
 
@@ -115,7 +115,7 @@ export default function Hero() {
           <div className={styles.benefitIcon}>⌁</div>
 
           <div>
-            <strong>Wi-Fi incluso</strong>
+            <strong>Roteador em comodato</strong>
             <p>
               Roteador de alta performance sem custo adicional.
             </p>
