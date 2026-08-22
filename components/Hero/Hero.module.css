@@ -1,0 +1,1314 @@
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 660px;
+
+  padding-top: 115px;
+
+  overflow: hidden;
+
+  color: #ffffff;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(8, 3, 15, 0.95) 0%,
+      rgba(16, 5, 27, 0.88) 28%,
+      rgba(23, 7, 38, 0.6) 50%,
+      rgba(13, 4, 22, 0.22) 72%,
+      rgba(8, 3, 15, 0.14) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(9, 3, 16, 0.18) 0%,
+      rgba(9, 3, 16, 0.03) 58%,
+      rgba(13, 7, 18, 0.95) 100%
+    ),
+    url("/hero/imbituba-hero.png");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   TRANSIÇÃO PARA PRÓXIMA SEÇÃO
+========================================================= */
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 135px;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(13, 7, 18, 0.45) 55%,
+      #0d0712 100%
+    );
+}
+
+
+/* =========================================================
+   GLOW SOBRE A FOTO
+========================================================= */
+
+.overlayGlow {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 78% 42%,
+      rgba(187, 70, 244, 0.1),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 20% 28%,
+      rgba(121, 32, 194, 0.08),
+      transparent 28%
+    );
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+  position: relative;
+
+  z-index: 5;
+
+  width: min(1280px, calc(100% - 64px));
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.95fr)
+    minmax(420px, 1.05fr);
+
+  align-items: center;
+
+  gap: 50px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   CONTEÚDO
+========================================================= */
+
+.content {
+  width: 100%;
+
+  max-width: 590px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+  width: fit-content;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 7px 14px;
+
+  border:
+    1px solid rgba(213, 104, 255, 0.55);
+
+  border-radius: 999px;
+
+  color: #e29cff;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.07em;
+}
+
+
+.eyebrowDot {
+  width: 6px;
+
+  height: 6px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #d65cff;
+
+  box-shadow:
+    0 0 12px #cf4eff;
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.content h1 {
+  margin-top: 20px;
+
+  font-size:
+    clamp(
+      3rem,
+      3.7vw,
+      4.25rem
+    );
+
+  line-height: 0.98;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 720;
+
+  text-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.28);
+}
+
+
+.content h1 strong {
+  display: block;
+
+  margin-top: 7px;
+
+  font-weight: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #bf4cf2 0%,
+      #df70ff 55%,
+      #bb48ed 100%
+    );
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  color: transparent;
+
+  filter:
+    drop-shadow(
+      0 5px 14px rgba(91, 17, 125, 0.25)
+    );
+}
+
+
+/* =========================================================
+   DESCRIÇÃO
+========================================================= */
+
+.description {
+  max-width: 500px;
+
+  margin-top: 18px;
+
+  color:
+    rgba(255, 255, 255, 0.74);
+
+  font-size: 0.96rem;
+
+  line-height: 1.55;
+
+  text-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 24px;
+}
+
+
+.primaryButton,
+.secondaryButton {
+  min-height: 50px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 11px;
+
+  padding: 0 23px;
+
+  border-radius: 999px;
+
+  font-size: 0.88rem;
+
+  font-weight: 650;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.primaryButton {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #9028dc,
+      #bd4ef0
+    );
+
+  box-shadow:
+    0 14px 35px
+    rgba(164, 47, 225, 0.3);
+}
+
+
+.primaryButton span {
+  font-size: 1.15rem;
+}
+
+
+.secondaryButton {
+  color: #ffffff;
+
+  border:
+    1px solid rgba(211, 102, 255, 0.58);
+
+  background:
+    rgba(23, 7, 34, 0.48);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+}
+
+
+.locationIcon {
+  color: #d86dff;
+
+  font-size: 1.15rem;
+}
+
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform:
+    translateY(-2px);
+}
+
+
+.primaryButton:hover {
+  box-shadow:
+    0 17px 45px
+    rgba(173, 54, 232, 0.42);
+}
+
+
+/* =========================================================
+   PROVA SOCIAL
+========================================================= */
+
+.socialProof {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 24px;
+}
+
+
+.avatars {
+  display: flex;
+
+  flex-shrink: 0;
+}
+
+
+.avatars span {
+  width: 32px;
+
+  height: 32px;
+
+  display: grid;
+
+  place-items: center;
+
+  margin-left: -8px;
+
+  border:
+    2px solid rgba(28, 8, 41, 0.9);
+
+  border-radius: 50%;
+
+  color: #37154e;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #d7c1df
+    );
+
+  font-size: 0.62rem;
+
+  font-weight: 800;
+}
+
+
+.avatars span:first-child {
+  margin-left: 0;
+}
+
+
+.proofText {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.proofText strong {
+  font-size: 0.84rem;
+}
+
+
+.proofText small {
+  color:
+    rgba(255, 255, 255, 0.58);
+
+  font-size: 0.72rem;
+}
+
+
+/* =========================================================
+   ÁREA VISUAL
+========================================================= */
+
+.visual {
+  position: relative;
+
+  min-width: 0;
+
+  min-height: 360px;
+}
+
+
+/* =========================================================
+   CARDS FLUTUANTES
+========================================================= */
+
+.floatingCard {
+  position: absolute;
+
+  z-index: 8;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  border:
+    1px solid rgba(218, 103, 255, 0.45);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(52, 17, 73, 0.86),
+      rgba(19, 7, 29, 0.88)
+    );
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.28);
+
+  backdrop-filter: blur(16px);
+
+  -webkit-backdrop-filter: blur(16px);
+}
+
+
+/* =========================================================
+   CARD VELOCIDADE
+========================================================= */
+
+.speedCard {
+  right: 15px;
+
+  top: 28px;
+
+  min-width: 190px;
+
+  padding: 14px 17px;
+}
+
+
+.speedIcon {
+  color: #d76bff;
+
+  font-size: 1.9rem;
+}
+
+
+.speedCard small,
+.wifiCard small,
+.installCard small {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color:
+    rgba(255, 255, 255, 0.55);
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.04em;
+}
+
+
+.speed {
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 6px;
+}
+
+
+.speed strong {
+  font-size: 2.25rem;
+
+  line-height: 0.9;
+}
+
+
+.speed span {
+  margin-bottom: 3px;
+
+  font-size: 0.66rem;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   WI-FI / INSTALAÇÃO
+========================================================= */
+
+.wifiCard,
+.installCard {
+  width: 165px;
+
+  padding: 14px;
+}
+
+
+.wifiCard {
+  right: -5px;
+
+  top: 145px;
+}
+
+
+.installCard {
+  right: 35px;
+
+  top: 245px;
+}
+
+
+.cardIcon {
+  width: 34px;
+
+  color: #dc6cff;
+
+  font-size: 1.6rem;
+}
+
+
+.wifiCard div:last-child,
+.installCard div:last-child {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.wifiCard strong,
+.installCard strong {
+  font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   BENEFÍCIOS
+========================================================= */
+
+.benefits {
+  position: relative;
+
+  z-index: 10;
+
+  width:
+    min(
+      1280px,
+      calc(100% - 64px)
+    );
+
+  min-height: 90px;
+
+  margin:
+    30px auto -34px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  border:
+    1px solid rgba(207, 93, 255, 0.27);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(37, 14, 54, 0.93),
+      rgba(22, 8, 31, 0.9)
+    );
+
+  box-shadow:
+    0 24px 50px
+    rgba(0, 0, 0, 0.22);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+}
+
+
+.benefit {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 17px 21px;
+}
+
+
+.benefit:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+
+  width: 1px;
+
+  height: 52%;
+
+  background:
+    rgba(255, 255, 255, 0.09);
+}
+
+
+.benefitIcon {
+  min-width: 38px;
+
+  color: #d665ff;
+
+  font-size: 1.6rem;
+
+  line-height: 1;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   ÍCONE FIBRA ÓPTICA
+   Evita emoji azul no iPhone
+========================================================= */
+
+.fiberIcon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transform:
+    rotate(-45deg);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 1.55rem;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: #d665ff;
+}
+
+
+.benefit strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 0.84rem;
+}
+
+
+.benefit p {
+  max-width: 185px;
+
+  color:
+    rgba(255, 255, 255, 0.52);
+
+  font-size: 0.69rem;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   NOTEBOOK
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .container {
+    width:
+      min(
+        1280px,
+        calc(100% - 40px)
+      );
+
+    grid-template-columns:
+      minmax(0, 0.95fr)
+      minmax(380px, 1.05fr);
+
+    gap: 30px;
+  }
+
+
+  .content h1 {
+    font-size:
+      clamp(
+        2.8rem,
+        4.5vw,
+        3.8rem
+      );
+  }
+
+
+  .benefits {
+    width:
+      min(
+        1280px,
+        calc(100% - 40px)
+      );
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 780px) {
+
+  .hero {
+    min-height: auto;
+
+    padding-top: 100px;
+
+    background-position:
+      58% center;
+  }
+
+
+  .container {
+    width:
+      calc(100% - 32px);
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 22px;
+  }
+
+
+  .content {
+    width: 100%;
+
+    max-width: 680px;
+  }
+
+
+  .content h1 {
+    font-size:
+      clamp(
+        2.8rem,
+        8vw,
+        4rem
+      );
+  }
+
+
+  .visual {
+    width: 100%;
+
+    min-height: 260px;
+  }
+
+
+  .benefits {
+    width:
+      calc(100% - 32px);
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    margin-top: 18px;
+  }
+
+
+  .benefit:nth-child(2)::after {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  /*
+     Fundo mais escuro e puxado para roxo.
+     A cidade continua visível, mas deixa
+     de competir com o conteúdo.
+  */
+
+  .hero {
+    min-height: auto;
+
+    padding-top: 94px;
+
+    padding-bottom: 28px;
+
+    background-image:
+      radial-gradient(
+        circle at 72% 42%,
+        rgba(137, 34, 190, 0.34),
+        transparent 46%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(21, 5, 35, 0.84) 0%,
+        rgba(37, 8, 58, 0.76) 28%,
+        rgba(43, 10, 67, 0.72) 52%,
+        rgba(25, 6, 39, 0.88) 76%,
+        rgba(13, 7, 18, 0.98) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(20, 5, 33, 0.62),
+        rgba(91, 20, 120, 0.22),
+        rgba(19, 5, 30, 0.52)
+      ),
+      url("/hero/imbituba-hero.png");
+
+    background-position:
+      56% center;
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+  }
+
+
+  .hero::after {
+    height: 90px;
+
+    background:
+      linear-gradient(
+        to bottom,
+        transparent,
+        rgba(13, 7, 18, 0.5),
+        #0d0712
+      );
+  }
+
+
+  .overlayGlow {
+    background:
+      radial-gradient(
+        circle at 74% 42%,
+        rgba(190, 62, 245, 0.14),
+        transparent 45%
+      );
+  }
+
+
+  .container {
+    width:
+      calc(100% - 32px);
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 18px;
+  }
+
+
+  .content {
+    width: 100%;
+
+    max-width: 100%;
+  }
+
+
+  /* =========================
+     EYEBROW MOBILE
+  ========================= */
+
+  .eyebrow {
+    max-width: 100%;
+
+    padding:
+      7px 12px;
+
+    font-size: 0.64rem;
+
+    white-space: nowrap;
+  }
+
+
+  /* =========================
+     TÍTULO MOBILE
+  ========================= */
+
+  .content h1 {
+    width: 100%;
+
+    margin-top: 22px;
+
+    font-size:
+      clamp(
+        2.6rem,
+        11.4vw,
+        3.45rem
+      );
+
+    line-height: 0.98;
+  }
+
+
+  /* =========================
+     DESCRIÇÃO MOBILE
+  ========================= */
+
+  .description {
+    width: 100%;
+
+    max-width: 100%;
+
+    margin-top: 20px;
+
+    color:
+      rgba(255, 255, 255, 0.8);
+
+    font-size: 0.93rem;
+
+    line-height: 1.55;
+  }
+
+
+  /* =========================
+     BOTÕES MOBILE
+  ========================= */
+
+  .buttons {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+
+    margin-top: 25px;
+  }
+
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+
+    min-height: 51px;
+  }
+
+
+  .secondaryButton {
+    background:
+      rgba(21, 5, 32, 0.72);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+
+  /* =========================
+     PROVA SOCIAL MOBILE
+  ========================= */
+
+  .socialProof {
+    width: 100%;
+
+    margin-top: 24px;
+  }
+
+
+  /* =========================
+     CARDS MOBILE
+  ========================= */
+
+  .visual {
+    width: 100%;
+
+    min-height: auto;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 9px;
+
+    margin-top: 22px;
+  }
+
+
+  .floatingCard,
+  .speedCard,
+  .wifiCard,
+  .installCard {
+    position: relative;
+
+    top: auto;
+
+    right: auto;
+
+    left: auto;
+
+    width: 100%;
+
+    min-width: 0;
+
+    padding:
+      11px 10px;
+
+    border-radius: 13px;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(38, 9, 56, 0.94),
+        rgba(19, 5, 29, 0.94)
+      );
+
+    backdrop-filter: blur(14px);
+
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+
+  .speedCard {
+    grid-column:
+      1 / -1;
+  }
+
+
+  .speedIcon {
+    font-size: 1.4rem;
+  }
+
+
+  .speed strong {
+    font-size: 1.7rem;
+  }
+
+
+  .speed span {
+    font-size: 0.55rem;
+  }
+
+
+  .cardIcon {
+    width: 27px;
+
+    font-size: 1.2rem;
+  }
+
+
+  .speedCard small,
+  .wifiCard small,
+  .installCard small {
+    font-size: 0.49rem;
+  }
+
+
+  .wifiCard strong,
+  .installCard strong {
+    font-size: 0.66rem;
+  }
+
+
+  /* =========================
+     BENEFÍCIOS MOBILE
+  ========================= */
+
+  .benefits {
+    width:
+      calc(100% - 32px);
+
+    min-height: 0;
+
+    grid-template-columns:
+      1fr;
+
+    margin:
+      20px auto 0;
+
+    border-radius: 20px;
+
+    overflow: visible;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(31, 8, 45, 0.97),
+        rgba(19, 5, 28, 0.98)
+      );
+  }
+
+
+  .benefit {
+    min-height: 92px;
+
+    padding:
+      18px 20px;
+
+    align-items: center;
+  }
+
+
+  .benefit:last-child {
+    padding-bottom: 22px;
+  }
+
+
+  .benefit:not(:last-child)::after {
+    left: 20px;
+
+    right: 20px;
+
+    bottom: 0;
+
+    width: auto;
+
+    height: 1px;
+
+    background:
+      rgba(255, 255, 255, 0.08);
+  }
+
+
+  .benefitIcon {
+    min-width: 36px;
+
+    font-size: 1.5rem;
+  }
+
+
+  .fiberIcon {
+    font-size: 1.45rem;
+  }
+
+
+  .benefit strong {
+    font-size: 0.88rem;
+  }
+
+
+  .benefit p {
+    max-width: none;
+
+    margin-top: 2px;
+
+    font-size: 0.72rem;
+
+    line-height: 1.45;
+  }
+}
+
+
+/* =========================================================
+   MOBILE PEQUENO
+========================================================= */
+
+@media (max-width: 440px) {
+
+  .hero {
+    padding-top: 90px;
+
+    padding-bottom: 30px;
+
+    background-position:
+      58% center;
+  }
+
+
+  .container {
+    width:
+      calc(100% - 28px);
+  }
+
+
+  .content h1 {
+    font-size:
+      clamp(
+        2.45rem,
+        11.7vw,
+        3rem
+      );
+  }
+
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+
+  .eyebrow {
+    padding:
+      7px 10px;
+
+    font-size: 0.6rem;
+  }
+
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 49px;
+
+    font-size: 0.81rem;
+  }
+
+
+  .benefits {
+    width:
+      calc(100% - 28px);
+
+    margin-bottom: 0;
+  }
+
+
+  .benefit {
+    min-height: 90px;
+
+    padding:
+      17px 18px;
+  }
+
+
+  .benefit:not(:last-child)::after {
+    left: 18px;
+
+    right: 18px;
+  }
+
+
+  .benefit:last-child {
+    padding-bottom: 24px;
+  }
+}
