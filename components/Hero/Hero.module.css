@@ -692,7 +692,6 @@
 
 /* =========================================================
    ÍCONE FIBRA ÓPTICA
-   Evita emoji azul no iPhone
 ========================================================= */
 
 .fiberIcon {
@@ -855,12 +854,6 @@
 ========================================================= */
 
 @media (max-width: 600px) {
-
-  /*
-     Fundo mais escuro e puxado para roxo.
-     A cidade continua visível, mas deixa
-     de competir com o conteúdo.
-  */
 
   .hero {
     min-height: auto;
@@ -1161,7 +1154,7 @@
 
     border-radius: 20px;
 
-    overflow: visible;
+    overflow: hidden;
 
     background:
       linear-gradient(
@@ -1173,33 +1166,32 @@
 
 
   .benefit {
+    position: relative;
+
     min-height: 92px;
 
     padding:
       18px 20px;
 
     align-items: center;
+
+    border-bottom:
+      1px solid
+      rgba(255, 255, 255, 0.08);
   }
 
 
   .benefit:last-child {
     padding-bottom: 22px;
+
+    border-bottom: none;
   }
 
 
+  .benefit::after,
+  .benefit:nth-child(2)::after,
   .benefit:not(:last-child)::after {
-    left: 20px;
-
-    right: 20px;
-
-    bottom: 0;
-
-    width: auto;
-
-    height: 1px;
-
-    background:
-      rgba(255, 255, 255, 0.08);
+    display: none;
   }
 
 
@@ -1301,14 +1293,9 @@
   }
 
 
-  .benefit:not(:last-child)::after {
-    left: 18px;
-
-    right: 18px;
-  }
-
-
   .benefit:last-child {
     padding-bottom: 24px;
+
+    border-bottom: none;
   }
 }
