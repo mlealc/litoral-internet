@@ -208,7 +208,7 @@ export const streamingPlans: StreamingPlan[] = [
         icon: "hotgo.png",
 
         description:
-          "Plataforma de entretenimento digital com conteúdos disponíveis sob demanda.",
+          "Plataforma de entretenimento adulto com conteúdos disponíveis sob demanda.",
       },
 
       {
@@ -297,8 +297,8 @@ export const streamingPlans: StreamingPlan[] = [
       },
 
       {
-        name: "Cindie",
-        icon: "Cindie.png",
+        name: "C indie",
+        icon: "C indie.png",
 
         description:
           "Catálogo de filmes e conteúdos selecionados para quem gosta de descobrir novas produções.",
@@ -354,8 +354,8 @@ export const streamingPlans: StreamingPlan[] = [
       },
 
       {
-        name: "SmartConect",
-        icon: "smartconect.png",
+        name: "SmartContent",
+        icon: "smartcontent.png",
 
         description:
           "Serviço digital com recursos e facilidades para complementar sua experiência conectada.",

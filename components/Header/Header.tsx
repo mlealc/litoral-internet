@@ -181,7 +181,6 @@ export default function Header() {
                   className={styles.mobileCustomerArrow}
                   aria-hidden="true"
                 >
-                  ↗
                 </span>
               </a>
 

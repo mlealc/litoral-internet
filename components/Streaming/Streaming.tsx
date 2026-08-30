@@ -17,9 +17,7 @@ import {
 import styles from "./Streaming.module.css";
 
 
-/* =========================================================
-   FORMATAR PREÇO
-========================================================= */
+/*formatar preço*/
 
 function formatPrice(
   price: number
@@ -38,9 +36,7 @@ function formatPrice(
 }
 
 
-/* =========================================================
-   STREAMING
-========================================================= */
+/*streaming*/
 
 export default function Streaming() {
   const [
@@ -59,9 +55,7 @@ export default function Streaming() {
     useOffers();
 
 
-  /* =======================================================
-     FECHAR MODAL COM ESC
-  ======================================================= */
+  /*fechar modal com ESC*/
 
   useEffect(() => {
     if (!selectedApp) {
@@ -97,9 +91,7 @@ export default function Streaming() {
   ]);
 
 
-  /* =======================================================
-     BLOQUEAR SCROLL DA PÁGINA COM MODAL ABERTO
-  ======================================================= */
+  /*bloquear scroll da página com o modal aberto*/
 
   useEffect(() => {
     if (!selectedApp) {
@@ -147,9 +139,7 @@ export default function Streaming() {
             styles.container
           }
         >
-          {/* =================================================
-              CABEÇALHO
-          ================================================= */}
+          {/*cabeçalho*/}
 
           <div
             className={
@@ -182,9 +172,7 @@ export default function Streaming() {
           </div>
 
 
-          {/* =================================================
-              PLANOS
-          ================================================= */}
+          {/*planos*/}
 
           <div
             className={
@@ -205,9 +193,7 @@ export default function Streaming() {
                   );
 
 
-                /* =============================================
-                   SELECIONAR / REMOVER STREAMING
-                ============================================= */
+                /*selecionar/remover streaming*/
 
                 function selectStreaming() {
                   if (selected) {
@@ -256,7 +242,7 @@ export default function Streaming() {
                         : ""
                     }`}
                   >
-                    {/* BADGE */}
+                    {/*badge*/}
 
                     {plan.highlighted && (
                       <span
@@ -269,7 +255,7 @@ export default function Streaming() {
                     )}
 
 
-                    {/* CABEÇALHO DO CARD */}
+                    {/*cabeçalho card*/}
 
                     <div
                       className={
@@ -293,7 +279,7 @@ export default function Streaming() {
                     </div>
 
 
-                    {/* PREÇO */}
+                    {/*preço*/}
 
                     <div
                       className={
@@ -384,9 +370,7 @@ export default function Streaming() {
                     </div>
 
 
-                    {/* =================================================
-                        APPS
-                    ================================================= */}
+                    {/*apps */}
 
                     <div
                       className={
@@ -447,9 +431,7 @@ export default function Streaming() {
                     </div>
 
 
-                    {/* =================================================
-                        TROCA MENSAL
-                    ================================================= */}
+                    {/*troca mensal*/}
 
                     <div
                       className={
@@ -482,9 +464,7 @@ export default function Streaming() {
                     </div>
 
 
-                    {/* =================================================
-                        SELEÇÃO
-                    ================================================= */}
+                    {/*seleção*/}
 
                     <button
                       type="button"
@@ -512,9 +492,7 @@ export default function Streaming() {
           </div>
 
 
-          {/* =================================================
-              OBSERVAÇÃO
-          ================================================= */}
+          {/*observações*/}
 
           <div
             className={
@@ -547,9 +525,7 @@ export default function Streaming() {
       </section>
 
 
-      {/* ===================================================
-          MODAL DO APP
-      =================================================== */}
+      {/*modal do app */}
 
       {selectedApp && (
         <div
@@ -576,7 +552,7 @@ export default function Streaming() {
               event.stopPropagation()
             }
           >
-            {/* FECHAR */}
+            {/*fechar*/}
 
             <button
               type="button"
@@ -594,7 +570,7 @@ export default function Streaming() {
             </button>
 
 
-            {/* ÍCONE */}
+            {/*ícone/}
 
             <div
               className={
@@ -608,7 +584,7 @@ export default function Streaming() {
             </div>
 
 
-            {/* CONTEÚDO */}
+            {/*conteúdo*/}
 
             <div
               className={
