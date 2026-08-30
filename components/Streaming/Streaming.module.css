@@ -1,6 +1,4 @@
-/* =========================
-   SEÇÃO STREAMING
-========================= */
+/*sessão streaming*/
 
 .streaming {
   position: relative;
@@ -38,9 +36,7 @@
 }
 
 
-/* =========================
-   CABEÇALHO
-========================= */
+/*cabeçalho*/
 
 .heading {
   max-width: 730px;
@@ -115,9 +111,7 @@
 }
 
 
-/* =========================
-   GRID
-========================= */
+/*grid*/
 
 .grid {
   display: grid;
@@ -134,9 +128,7 @@
 }
 
 
-/* =========================
-   CARD
-========================= */
+/*card*/
 
 .card {
   position: relative;
@@ -183,9 +175,7 @@
 }
 
 
-/* =========================
-   PREMIUM
-========================= */
+/*premium*/
 
 .highlighted {
   color: #ffffff;
@@ -211,9 +201,7 @@
 }
 
 
-/* =========================
-   BADGE
-========================= */
+/*badge*/
 
 .badge {
   position: relative;
@@ -247,9 +235,7 @@
 }
 
 
-/* =========================
-   CABEÇALHO DO CARD
-========================= */
+/*cabeçalho do card*/
 
 .cardHeader {
   position: relative;
@@ -282,9 +268,7 @@
 }
 
 
-/* =========================
-   PREÇO
-========================= */
+/*preço*/
 
 .priceArea {
   position: relative;
@@ -364,9 +348,7 @@
 }
 
 
-/* =========================
-   SEPARADOR
-========================= */
+/*separador*/
 
 .separator {
   width: 100%;
@@ -386,9 +368,7 @@
 }
 
 
-/* =========================
-   SERVIÇOS
-========================= */
+/*serviços*/
 
 .services {
   display: flex;
@@ -450,9 +430,7 @@
 }
 
 
-/* =========================
-   ÁREA DOS APPS
-========================= */
+/*área dos apps */
 
 .appsArea {
   margin-top: 24px;
@@ -487,9 +465,7 @@
 }
 
 
-/* =========================
-   GRID DOS APPS
-========================= */
+/*grid dos apps*/
 
 .appsGrid {
   display: grid;
@@ -504,9 +480,7 @@
 }
 
 
-/* =========================
-   APP
-========================= */
+/*apps*/
 
 .appIcon {
   appearance: none;
@@ -576,9 +550,7 @@
 }
 
 
-/* =========================
-   DICA DOS APPS
-========================= */
+/*dica dos apps*/
 
 .appsHint {
   display: block;
@@ -599,9 +571,7 @@
 }
 
 
-/* =========================
-   TROQUE TODO MÊS
-========================= */
+/*truque do mês*/
 
 .flexInfo {
   display: flex;
@@ -701,9 +671,7 @@
 }
 
 
-/* =========================
-   BOTÃO
-========================= */
+/*botão*/
 
 .button {
   width: 100%;
@@ -783,9 +751,7 @@
 }
 
 
-/* =========================
-   NOTA FINAL
-========================= */
+/*nota final*/
 
 .note {
   max-width: 820px;
@@ -853,9 +819,7 @@
 }
 
 
-/* =========================
-   GLOWS
-========================= */
+/*glows*/
 
 .glowLeft,
 .glowRight {
@@ -888,9 +852,7 @@
 }
 
 
-/* =========================
-   MODAL
-========================= */
+/*modal*/
 
 .appModalOverlay {
   position: fixed;
@@ -1075,9 +1037,7 @@
 }
 
 
-/* =========================
-   ANIMAÇÕES
-========================= */
+/*animações*/
 
 @keyframes appOverlayIn {
   from {
@@ -1108,9 +1068,7 @@
 }
 
 
-/* =========================
-   NOTEBOOK
-========================= */
+/*notebook*/
 
 @media (max-width: 1100px) {
   .grid {
@@ -1129,9 +1087,7 @@
 }
 
 
-/* =========================
-   TABLET
-========================= */
+/*tablet*/
 
 @media (max-width: 780px) {
   .streaming {
@@ -1166,9 +1122,7 @@
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/*mobile*/
 
 @media (max-width: 650px) {
   .streaming {
@@ -1231,9 +1185,7 @@
 }
 
 
-/* =========================
-   MOBILE PEQUENO
-========================= */
+/*mobile pequeno*/
 
 @media (max-width: 420px) {
   .appsGrid {
@@ -1269,4 +1221,71 @@
     right: 10px;
     top: 10px;
   }
+}
+
+/*streaming selecionado*/
+
+.selected {
+  border-color:
+    rgba(92, 225, 171, 0.55);
+
+  box-shadow:
+    0 0 0 1px
+      rgba(92, 225, 171, 0.06),
+    0 28px 65px
+      rgba(41, 18, 51, 0.14);
+}
+
+.selected .button {
+  color: #10251c;
+
+  border-color:
+    rgba(96, 226, 173, 0.6);
+
+  background:
+    linear-gradient(
+      135deg,
+      #67e7b1,
+      #97f2cc
+    );
+
+  box-shadow:
+    0 13px 28px
+    rgba(76, 204, 151, 0.14);
+}
+
+.selected .button:hover {
+  color: #10251c;
+
+  background:
+    linear-gradient(
+      135deg,
+      #73edba,
+      #a1f6d2
+    );
+}
+
+
+/*premium selecionado*/
+
+.highlighted.selected {
+  border-color:
+    rgba(101, 231, 177, 0.55);
+
+  box-shadow:
+    0 0 0 1px
+      rgba(101, 231, 177, 0.06),
+    0 30px 70px
+      rgba(0, 0, 0, 0.3);
+}
+
+.highlighted.selected .button {
+  color: #10251c;
+
+  background:
+    linear-gradient(
+      135deg,
+      #67e7b1,
+      #98f3cd
+    );
 }

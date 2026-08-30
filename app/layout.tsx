@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
+import OfferCart from "@/components/OfferCart/OfferCart";
+import OfferProvider from "@/components/Offers/OfferProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,21 +20,27 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Litoral Internet",
   description:
-    "Internet fibra óptica, entretenimento e muito mais.",
+    "Internet fibra óptica em Imbituba. Planos de internet, streaming, telefonia e benefícios.",
 };
 
 export default function RootLayout({
   children,
-}: LayoutProps<"/">) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-full flex flex-col">
-        <SmoothScroll />
+      <body>
+        <OfferProvider>
+          <SmoothScroll />
 
-        {children}
+          {children}
+
+          <OfferCart />
+        </OfferProvider>
       </body>
     </html>
   );

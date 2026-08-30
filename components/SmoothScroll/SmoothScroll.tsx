@@ -25,15 +25,7 @@ export default function SmoothScroll() {
 
     rafId = requestAnimationFrame(raf);
 
-    /*
-     * LINKS INTERNOS
-     * #planos
-     * #streaming
-     * #extras
-     * #telefonia
-     * #cobertura
-     * etc.
-     */
+    /*LINKS INTERNOS #planos / #streaming / #extras / #telefonia / #cobertura / etc*/
 
     const handleAnchorClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement;

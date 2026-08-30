@@ -2,10 +2,15 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
 import styles from "./Header.module.css";
 
+import {
+  siteConfig,
+} from "@/config/site";
+
 const CENTRAL_ASSINANTE_URL =
-  "https://ixc.litoralinternet.com.br/central_assinante_web/login";
+  siteConfig.links.subscriberCenter;
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,7 +36,8 @@ export default function Header() {
       }`}
     >
       <div className={styles.container}>
-        {/* LOGO */}
+        {/*logo*/}
+
         <a
           href="#"
           className={styles.logo}
@@ -46,27 +52,52 @@ export default function Header() {
           />
         </a>
 
-        {/* NAVEGAÇÃO DESKTOP */}
+        {/*navegações desktop*/}
+
         <nav
           className={styles.nav}
           aria-label="Navegação principal"
         >
-          <a href="#planos">Planos</a>
-          <a href="#streaming">Streaming</a>
-          <a href="#extras">Benefícios</a>
-          <a href="#cobertura">Cobertura</a>
-          <a href="#suporte">Suporte</a>
+          <a href="#planos">
+            Planos
+          </a>
+
+          <a href="#streaming">
+            Streaming
+          </a>
+
+          <a href="#extras">
+            Benefícios
+          </a>
+
+          <a href="#cobertura">
+            Cobertura
+          </a>
+
+          <a href="#suporte">
+            Suporte
+          </a>
         </nav>
 
-        {/* BOTÕES DESKTOP */}
+        {/*ações desktop*/}
+
         <div className={styles.actions}>
           <a
             href={CENTRAL_ASSINANTE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.clientButton}
+            className={styles.customerArea}
           >
-            Central do Assinante
+            <span
+              className={styles.customerIcon}
+              aria-hidden="true"
+            >
+              ◉
+            </span>
+
+            <span>
+              Central do Assinante
+            </span>
           </a>
 
           <a
@@ -77,7 +108,8 @@ export default function Header() {
           </a>
         </div>
 
-        {/* MENU MOBILE NATIVO */}
+        {/*menu mobile*/}
+
         <details className={styles.mobileDetails}>
           <summary
             className={styles.menuButton}
@@ -119,14 +151,38 @@ export default function Header() {
               </a>
             </nav>
 
+            {/*ações mobile*/}
+
             <div className={styles.mobileActions}>
               <a
                 href={CENTRAL_ASSINANTE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.mobileSecondary}
+                className={styles.mobileCustomerArea}
               >
-                Central do Assinante
+                <span
+                  className={styles.mobileCustomerIcon}
+                  aria-hidden="true"
+                >
+                  ◉
+                </span>
+
+                <span className={styles.mobileCustomerText}>
+                  <small>
+                    ACESSO RÁPIDO
+                  </small>
+
+                  <strong>
+                    Central do Assinante
+                  </strong>
+                </span>
+
+                <span
+                  className={styles.mobileCustomerArrow}
+                  aria-hidden="true"
+                >
+                  ↗
+                </span>
               </a>
 
               <a

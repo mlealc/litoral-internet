@@ -1,16 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
 
 import {
   streamingPlans,
   type StreamingApp,
 } from "@/data/streaming";
 
+import {
+  useOffers,
+} from "@/components/Offers/OfferProvider";
+
 import styles from "./Streaming.module.css";
 
-function formatPrice(price: number) {
-  const [reais, centavos] = price.toFixed(2).split(".");
+
+/* =========================================================
+   FORMATAR PREÇO
+========================================================= */
+
+function formatPrice(
+  price: number
+) {
+  const [
+    reais,
+    centavos,
+  ] = price
+    .toFixed(2)
+    .split(".");
 
   return {
     reais,
@@ -18,22 +37,54 @@ function formatPrice(price: number) {
   };
 }
 
+
+/* =========================================================
+   STREAMING
+========================================================= */
+
 export default function Streaming() {
-  const [selectedApp, setSelectedApp] =
-    useState<StreamingApp | null>(null);
+  const [
+    selectedApp,
+    setSelectedApp,
+  ] =
+    useState<StreamingApp | null>(
+      null
+    );
+
+  const {
+    addOffer,
+    removeOffer,
+    hasOffer,
+  } =
+    useOffers();
+
+
+  /* =======================================================
+     FECHAR MODAL COM ESC
+  ======================================================= */
 
   useEffect(() => {
     if (!selectedApp) {
       return;
     }
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setSelectedApp(null);
+    function handleKeyDown(
+      event: KeyboardEvent
+    ) {
+      if (
+        event.key ===
+        "Escape"
+      ) {
+        setSelectedApp(
+          null
+        );
       }
-    };
+    }
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
 
     return () => {
       window.removeEventListener(
@@ -41,39 +92,81 @@ export default function Streaming() {
         handleKeyDown
       );
     };
-  }, [selectedApp]);
+  }, [
+    selectedApp,
+  ]);
+
+
+  /* =======================================================
+     BLOQUEAR SCROLL DA PÁGINA COM MODAL ABERTO
+  ======================================================= */
 
   useEffect(() => {
     if (!selectedApp) {
-      document.body.style.overflow = "";
+      document.body.style.overflow =
+        "";
 
       return;
     }
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+      "hidden";
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow =
+        "";
     };
-  }, [selectedApp]);
+  }, [
+    selectedApp,
+  ]);
+
 
   return (
     <>
       <section
-        className={styles.streaming}
+        className={
+          styles.streaming
+        }
         id="streaming"
       >
-        <div className={styles.glowLeft} />
-        <div className={styles.glowRight} />
+        <div
+          className={
+            styles.glowLeft
+          }
+        />
 
-        <div className={styles.container}>
-          <div className={styles.heading}>
-            <span className={styles.eyebrow}>
+        <div
+          className={
+            styles.glowRight
+          }
+        />
+
+
+        <div
+          className={
+            styles.container
+          }
+        >
+          {/* =================================================
+              CABEÇALHO
+          ================================================= */}
+
+          <div
+            className={
+              styles.heading
+            }
+          >
+            <span
+              className={
+                styles.eyebrow
+              }
+            >
               ENTRETENIMENTO
             </span>
 
             <h2>
               Sua internet.
+
               <strong>
                 {" "}
                 Seu entretenimento.
@@ -81,194 +174,371 @@ export default function Streaming() {
             </h2>
 
             <p>
-              Escolha o pacote que combina com você e
-              aproveite ainda mais sua conexão Litoral
-              Internet.
+              Escolha o pacote que
+              combina com você e
+              aproveite ainda mais sua
+              conexão Litoral Internet.
             </p>
           </div>
 
-          <div className={styles.grid}>
-            {streamingPlans.map((plan) => {
-              const price = formatPrice(plan.price);
 
-              return (
-                <article
-                  key={plan.id}
-                  className={`${styles.card} ${
-                    plan.highlighted
-                      ? styles.highlighted
-                      : ""
-                  }`}
-                >
-                  {plan.highlighted && (
-                    <span className={styles.badge}>
-                      PACOTE COMPLETO
-                    </span>
-                  )}
+          {/* =================================================
+              PLANOS
+          ================================================= */}
 
-                  <div className={styles.cardHeader}>
-                    <span
-                      className={styles.planLabel}
-                    >
-                      LITORAL
-                    </span>
+          <div
+            className={
+              styles.grid
+            }
+          >
+            {streamingPlans.map(
+              (plan) => {
+                const price =
+                  formatPrice(
+                    plan.price
+                  );
 
-                    <h3>
-                      {plan.name.replace(
-                        " Litoral",
-                        ""
-                      )}
-                    </h3>
-                  </div>
+                const selected =
+                  hasOffer(
+                    "streaming",
+                    plan.id
+                  );
 
-                  <div className={styles.priceArea}>
-                    <span className={styles.from}>
-                      a partir de
-                    </span>
 
-                    <div className={styles.price}>
-                      <span
-                        className={styles.currency}
-                      >
-                        R$
-                      </span>
+                /* =============================================
+                   SELECIONAR / REMOVER STREAMING
+                ============================================= */
 
-                      <strong>
-                        {price.reais}
-                      </strong>
+                function selectStreaming() {
+                  if (selected) {
+                    removeOffer(
+                      "streaming",
+                      plan.id
+                    );
 
-                      <div>
-                        <span>
-                          ,{price.centavos}
-                        </span>
+                    return;
+                  }
 
-                        <small>
-                          /mês
-                        </small>
-                      </div>
-                    </div>
-                  </div>
+                  addOffer({
+                    id:
+                      plan.id,
 
-                  <div
-                    className={styles.separator}
-                  />
+                    type:
+                      "streaming",
 
-                  <div className={styles.services}>
-                    {plan.services.map(
-                      (service) => (
-                        <div
-                          key={service}
-                          className={
-                            styles.service
-                          }
-                        >
-                          <span>
-                            ✓
-                          </span>
+                    name:
+                      plan.name,
 
-                          <p>
-                            {service}
-                          </p>
-                        </div>
-                      )
-                    )}
-                  </div>
+                    price:
+                      plan.price,
 
-                  <div
-                    className={styles.appsArea}
+                    subtitle:
+                      "Pacote de entretenimento Litoral",
+
+                    details:
+                      plan.services,
+                  });
+                }
+
+
+                return (
+                  <article
+                    key={
+                      plan.id
+                    }
+                    className={`${styles.card} ${
+                      plan.highlighted
+                        ? styles.highlighted
+                        : ""
+                    } ${
+                      selected
+                        ? styles.selected
+                        : ""
+                    }`}
                   >
-                    <span
-                      className={styles.appsLabel}
-                    >
-                      Apps e canais inclusos
-                    </span>
+                    {/* BADGE */}
+
+                    {plan.highlighted && (
+                      <span
+                        className={
+                          styles.badge
+                        }
+                      >
+                        PACOTE COMPLETO
+                      </span>
+                    )}
+
+
+                    {/* CABEÇALHO DO CARD */}
 
                     <div
-                      className={styles.appsGrid}
-                    >
-                      {plan.apps.map((app) => (
-                        <button
-                          key={`${plan.id}-${app.name}`}
-                          type="button"
-                          className={
-                            styles.appIcon
-                          }
-                          onClick={() =>
-                            setSelectedApp(app)
-                          }
-                          aria-label={`Saiba mais sobre ${app.name}`}
-                        >
-                          <img
-                            src={`/icons/${app.icon}`}
-                            alt={app.name}
-                            loading="lazy"
-                          />
-                        </button>
-                      ))}
-                    </div>
-
-                    <span
                       className={
-                        styles.appsHint
+                        styles.cardHeader
                       }
                     >
-                      Clique em um app para saber mais
-                    </span>
-                  </div>
+                      <span
+                        className={
+                          styles.planLabel
+                        }
+                      >
+                        LITORAL
+                      </span>
 
-                  <div
-                    className={styles.flexInfo}
-                  >
+                      <h3>
+                        {plan.name.replace(
+                          " Litoral",
+                          ""
+                        )}
+                      </h3>
+                    </div>
+
+
+                    {/* PREÇO */}
+
                     <div
-                      className={styles.flexIcon}
+                      className={
+                        styles.priceArea
+                      }
                     >
-                      ↻
+                      <span
+                        className={
+                          styles.from
+                        }
+                      >
+                        a partir de
+                      </span>
+
+                      <div
+                        className={
+                          styles.price
+                        }
+                      >
+                        <span
+                          className={
+                            styles.currency
+                          }
+                        >
+                          R$
+                        </span>
+
+                        <strong>
+                          {
+                            price.reais
+                          }
+                        </strong>
+
+                        <div>
+                          <span>
+                            ,
+                            {
+                              price.centavos
+                            }
+                          </span>
+
+                          <small>
+                            /mês
+                          </small>
+                        </div>
+                      </div>
                     </div>
 
-                    <div>
-                      <strong>
-                        Troque todo mês
-                      </strong>
 
-                      <p>
-                        Use um dos apps disponíveis
-                        por 30 dias e, no próximo
-                        ciclo, escolha outro app do
-                        mesmo pacote.
-                      </p>
+                    <div
+                      className={
+                        styles.separator
+                      }
+                    />
+
+
+                    {/* SERVIÇOS */}
+
+                    <div
+                      className={
+                        styles.services
+                      }
+                    >
+                      {plan.services.map(
+                        (
+                          service
+                        ) => (
+                          <div
+                            key={
+                              service
+                            }
+                            className={
+                              styles.service
+                            }
+                          >
+                            <span>
+                              ✓
+                            </span>
+
+                            <p>
+                              {
+                                service
+                              }
+                            </p>
+                          </div>
+                        )
+                      )}
                     </div>
-                  </div>
 
-                  <a
-                    href="#cobertura"
-                    className={styles.button}
-                  >
-                    Quero adicionar
 
-                    <span>
-                      →
-                    </span>
-                  </a>
-                </article>
-              );
-            })}
+                    {/* =================================================
+                        APPS
+                    ================================================= */}
+
+                    <div
+                      className={
+                        styles.appsArea
+                      }
+                    >
+                      <span
+                        className={
+                          styles.appsLabel
+                        }
+                      >
+                        Apps e canais
+                        inclusos
+                      </span>
+
+                      <div
+                        className={
+                          styles.appsGrid
+                        }
+                      >
+                        {plan.apps.map(
+                          (
+                            app
+                          ) => (
+                            <button
+                              key={`${plan.id}-${app.name}`}
+                              type="button"
+                              className={
+                                styles.appIcon
+                              }
+                              onClick={() =>
+                                setSelectedApp(
+                                  app
+                                )
+                              }
+                              aria-label={`Saiba mais sobre ${app.name}`}
+                            >
+                              <img
+                                src={`/icons/${app.icon}`}
+                                alt={
+                                  app.name
+                                }
+                                loading="lazy"
+                              />
+                            </button>
+                          )
+                        )}
+                      </div>
+
+                      <span
+                        className={
+                          styles.appsHint
+                        }
+                      >
+                        Clique em um app
+                        para saber mais
+                      </span>
+                    </div>
+
+
+                    {/* =================================================
+                        TROCA MENSAL
+                    ================================================= */}
+
+                    <div
+                      className={
+                        styles.flexInfo
+                      }
+                    >
+                      <div
+                        className={
+                          styles.flexIcon
+                        }
+                      >
+                        ↻
+                      </div>
+
+                      <div>
+                        <strong>
+                          Troque todo mês
+                        </strong>
+
+                        <p>
+                          Use um dos apps
+                          disponíveis por
+                          30 dias e, no
+                          próximo ciclo,
+                          escolha outro
+                          app do mesmo
+                          pacote.
+                        </p>
+                      </div>
+                    </div>
+
+
+                    {/* =================================================
+                        SELEÇÃO
+                    ================================================= */}
+
+                    <button
+                      type="button"
+                      className={
+                        styles.button
+                      }
+                      onClick={
+                        selectStreaming
+                      }
+                    >
+                      {selected
+                        ? "Streaming selecionado"
+                        : "Quero adicionar"}
+
+                      <span>
+                        {selected
+                          ? "✓"
+                          : "+"}
+                      </span>
+                    </button>
+                  </article>
+                );
+              }
+            )}
           </div>
 
-          <div className={styles.note}>
+
+          {/* =================================================
+              OBSERVAÇÃO
+          ================================================= */}
+
+          <div
+            className={
+              styles.note
+            }
+          >
             <div
-              className={styles.noteIcon}
+              className={
+                styles.noteIcon
+              }
             >
               ✦
             </div>
 
             <div>
               <strong>
-                Internet + entretenimento
+                Internet +
+                entretenimento
               </strong>
 
               <p>
-                Adicione um pacote de streaming ao
-                seu plano de internet a partir de
+                Adicione um pacote de
+                streaming ao seu plano
+                de internet a partir de
                 R$ 7,99 por mês.
               </p>
             </div>
@@ -276,43 +546,69 @@ export default function Streaming() {
         </div>
       </section>
 
+
+      {/* ===================================================
+          MODAL DO APP
+      =================================================== */}
+
       {selectedApp && (
         <div
-          className={styles.appModalOverlay}
+          className={
+            styles.appModalOverlay
+          }
           onClick={() =>
-            setSelectedApp(null)
+            setSelectedApp(
+              null
+            )
           }
         >
           <div
-            className={styles.appModal}
+            className={
+              styles.appModal
+            }
             role="dialog"
             aria-modal="true"
             aria-labelledby="streaming-app-title"
-            onClick={(event) =>
+            data-lenis-prevent
+            onClick={(
+              event
+            ) =>
               event.stopPropagation()
             }
           >
+            {/* FECHAR */}
+
             <button
               type="button"
               className={
                 styles.appModalClose
               }
               onClick={() =>
-                setSelectedApp(null)
+                setSelectedApp(
+                  null
+                )
               }
               aria-label="Fechar informações"
             >
               ×
             </button>
 
+
+            {/* ÍCONE */}
+
             <div
-              className={styles.appModalIcon}
+              className={
+                styles.appModalIcon
+              }
             >
               <img
                 src={`/icons/${selectedApp.icon}`}
                 alt=""
               />
             </div>
+
+
+            {/* CONTEÚDO */}
 
             <div
               className={
@@ -327,9 +623,14 @@ export default function Streaming() {
                 BENEFÍCIO INCLUSO
               </span>
 
-              <h3 id="streaming-app-title">
-                {selectedApp.name}
+              <h3
+                id="streaming-app-title"
+              >
+                {
+                  selectedApp.name
+                }
               </h3>
+
 
               {selectedApp.detail && (
                 <span
@@ -337,12 +638,17 @@ export default function Streaming() {
                     styles.appModalDetail
                   }
                 >
-                  {selectedApp.detail}
+                  {
+                    selectedApp.detail
+                  }
                 </span>
               )}
 
+
               <p>
-                {selectedApp.description}
+                {
+                  selectedApp.description
+                }
               </p>
             </div>
           </div>
