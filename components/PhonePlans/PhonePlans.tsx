@@ -200,7 +200,6 @@ export default function PhonePlans() {
 
         <div className={styles.info}>
           <span className={styles.infoIcon}>
-            ☎
           </span>
 
           <p>
